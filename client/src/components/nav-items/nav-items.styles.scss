@@ -7,7 +7,7 @@
 
   .book-btn {
     font-family: inherit;
-    font-size: inherit;
+    font-size: 20px;
     text-decoration: none;
     background-color: inherit;
     border: none;
@@ -16,7 +16,7 @@
     transition: all .5s ease-in;
 
     &:hover {
-      color: rgb(194, 222, 255);
+      color: rgb(134, 42, 42);
     }
   }
 }

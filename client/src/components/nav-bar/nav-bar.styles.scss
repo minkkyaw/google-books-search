@@ -5,26 +5,4 @@
   padding: 20px;
   background-color: #ddd;
   color: rgb(41, 41, 41);
-
-  .book-button-groups {
-    display: flex;
-    width: 200px;
-    justify-content: space-around;
-    align-items: center;
-
-    .book-btn {
-      font-family: inherit;
-      font-size: inherit;
-      text-decoration: none;
-      background-color: inherit;
-      border: none;
-      color : inherit;
-      cursor: pointer;
-      transition: all .5s ease-in;
-
-      &:hover {
-        color: rgb(194, 222, 255);
-      }
-    }
-  }
 }
