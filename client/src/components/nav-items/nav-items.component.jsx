@@ -19,9 +19,9 @@ const NavItems = ({ handleFunction, navItems, action, book, view}) => {
         
       }
       {action === 'save' ? (
-          <button data-book={book} onClick={handleFunction} className="book-save-btn book-btn">Save</button>
+          <button data-data={book} onClick={handleFunction} className="book-save-btn book-btn">Save</button>
         ) : 
-        action === 'delete' ? (<button data-book={book} onClick={handleFunction} className="book-save-btn book-btn">Delete</button>) : 
+        action === 'delete' ? (<button data-data={JSON.parse(book)._id} onClick={handleFunction} className="book-save-btn book-btn">Delete</button>) : 
         null
       }       
       </div>

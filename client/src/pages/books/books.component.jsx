@@ -16,11 +16,15 @@ const Books = () => {
   const handleFormSubmit = event => {
     event.preventDefault();
     event.target.blur();
-    setSearch(document.querySelector(".search-input").value);
+    const searchInputELement = document.querySelector(".search-input");
+    setSearch(searchInputELement.value);
+    searchInputELement.value = "";
   };
 
-  const handleBookSaved = event => {
-    const bookSaved = JSON.parse(event.target.dataset.book);
+  const handleBookSaved = async event => {
+    const bookSaved = JSON.parse(event.target.dataset.data);
+    const savedBookInDB = await API.getBooks({id:bookSaved.id}) 
+    if(savedBookInDB.data.length !== 0) return alert('This book has been already saved!');
     API.saveBook(bookSaved).then(res => alert('Successfully Saved')).catch((err) => console.log(err))
   };
 
@@ -40,8 +44,10 @@ const Books = () => {
         {books.length ? (
           <div>
             {books.map(book =>{
+              const {id, volumeInfo: {title, authors, description, imageLinks: {thumbnail}, infoLink}} = book;
+              const savedBook= {id, title, authors, description, thumbnail, infoLink};
               return (
-                <BookDetails key={book.id} book={book.volumeInfo} handleFunction={handleBookSaved} action="save" />
+                <BookDetails key={book.id} book={savedBook} handleFunction={handleBookSaved} action="save" />
               )}
             )}
           </div>

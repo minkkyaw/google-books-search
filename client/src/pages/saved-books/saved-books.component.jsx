@@ -1,28 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import API from "../../utils/API";
 import BookDetails from './../../components/BookDetails/book-details.component';
 
 const SavedBooks = () =>{
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    loadBooks()
-  },[books])
-
   const loadBooks = () => {
     return API.getBooks()
       .then(res => setBooks(res.data))
       .catch(err => console.log(err));
   };
+  loadBooks();
 
   const deleteBook = id => {
     API.deleteBook(id)
-      .then(res => loadBooks())
-      .then(() => setTimeout(()=> (alert('Successfully Deleted'), 1000)))
+      .then(() => loadBooks().then(() => alert('Successfully Deleted')))
       .catch(err => console.log(err));
   };
   const handleDeleteBook = event => {
-    const id = JSON.parse(event.target.dataset.book)._id;
+    const id = event.target.dataset.data;
     deleteBook(id);
   }
   return (

@@ -14,8 +14,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    const { title, authors, description, thumbnail, infoLink } = req.body;
-    db.Book.create({ title, authors, description, thumbnail, infoLink })
+    const { id, title, authors, description, thumbnail, infoLink } = req.body;
+    db.Book.create({ id, title, authors, description, thumbnail, infoLink })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
