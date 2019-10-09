@@ -2,7 +2,7 @@ import React from 'react';
 
 import './nav-items.styles.scss';
 
-const NavItems = ({ handleFunction, navItems, action, book}) => {
+const NavItems = ({ handleFunction, navItems, action, book, view}) => {
   return (
     <div className="book-button-groups">
       { navItems.map((navItem, i) => (
@@ -10,7 +10,7 @@ const NavItems = ({ handleFunction, navItems, action, book}) => {
             key={i}
             className="book-btn"
             href={`${navItem.href}`}
-            target="_blank"
+            target={view ? "_blank" : ""}
             rel="noopener noreferrer"
           >
             {navItem.name}

@@ -24,7 +24,7 @@ const BookDetails = (props) => {
     <div className="book-wrapper">
       <div className="book-navbar">
         <h2 className="book-title">{title}</h2>
-        <NavItems book={JSON.stringify(book)} navItems={navItems} handleFunction={props.handleFunction} action={props.action}/>
+        <NavItems book={JSON.stringify(book)} navItems={navItems} handleFunction={props.handleFunction} action={props.action} view/>
       </div>
       <div className="details-wrapper">
         <h3 className="book-authors">{authors}</h3>
